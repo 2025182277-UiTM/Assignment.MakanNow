@@ -223,7 +223,7 @@ function renderLayout() {
   $('footer').innerHTML = `
   <footer class="app-footer"><div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
     <span>&copy; 2026 MakanNow &middot; Retort ready-to-eat meals and cooking pastes &middot; IMS566 Individual Project</span>
-    <span>Built by <strong>Fariz Azim</strong> &middot; <a href="https://github.com/your-username/makannow">GitHub repo</a></span>
+    <span>Built by <strong>Fariz Azim</strong> &middot; <a href="https://github.com/2025182277-UiTM/Assignment.MakanNow.git">GitHub repo</a></span>
   </div></footer>`;
   if (window.applyThemeLabels) applyThemeLabels();
   if (role === 'admin') updateNewBadge();
