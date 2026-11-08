@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<title>Home | MakanNow</title>
+<meta name="description" content="Your MakanNow orders, spending summary and recent activity.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Fariz Azim"><meta name="keywords" content="MakanNow, retort, ready to eat, rendang, cooking paste, sambal, inventory">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%2220%22 y=%2220%22 width=%2260%22 height=%2260%22 fill=%22%23C62828%22 transform=%22rotate(45 50 50)%22/></svg>">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script>document.documentElement.dataset.theme=document.documentElement.dataset.bsTheme=localStorage.getItem("theme")||((window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light")</script>
+</head><body><header id="nav"></header>
+<main class="container py-4">
+  <div class="page-head"><h1 class="h3" id="welcome"></h1><p>Your MakanNow orders at a glance.</p></div>
+  <section class="strip mb-4" aria-label="Summary">
+    <div><div class="lbl">Orders placed</div><div class="num" id="kOrders"></div><div class="sub">excluding cancelled</div></div>
+    <div><div class="lbl">Total spent</div><div class="num" id="kSpent"></div><div class="sub">across all orders</div></div>
+    <div><div class="lbl">Items bought</div><div class="num" id="kItems"></div><div class="sub">packs, pastes and pouches</div></div>
+    <div><div class="lbl">Orders on the way</div><div class="num" id="kActive"></div><div class="sub">preparing or on the way</div></div>
+  </section>
+  <section class="row g-3 mb-4" aria-label="Charts">
+    <div class="col-lg-7"><div class="panel"><h2 class="h5">My spending by month</h2><div class="chart-box"><canvas id="monthChart"></canvas></div></div></div>
+    <div class="col-lg-5"><div class="panel"><h2 class="h5">What I buy</h2><div class="chart-box"><canvas id="catChart"></canvas></div></div></div>
+  </section>
+  <section class="panel" aria-label="Recent orders">
+    <div class="d-flex justify-content-between align-items-center"><h2 class="h5">Recent orders</h2><a href="orders.html" class="link">See all orders</a></div>
+    <div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Order</th><th>Total</th><th class="c">Status</th></tr></thead><tbody id="recentBody"></tbody></table></div>
+  </section>
+</main>
+<div id="footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body></html>

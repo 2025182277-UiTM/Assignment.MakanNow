@@ -1,0 +1,157 @@
+/* ===== MakanNow styles =====
+   Look: packaging / food-label. Flat colour, square corners, condensed uppercase headings,
+   ruled lists instead of boxes. Chilli red, turmeric gold, ink black. Light and dark themes
+   are switched by the data-theme attribute on <html> (see js/theme.js). */
+:root,[data-theme="light"]{
+  --text:#1B1B18; --rule:#1B1B18; --surface:#FFFFFF; --bg:#F6F6F2; --line:#DCDCD3; --muted:#6B6B63;
+  --tint:#FFF1C7; --th:#4A4A42; --chip:#EAEAE2; --field:#B9B9B0; --hover:rgba(27,27,24,.04); --footer:#1B1B18; --link:#C62828;
+  --prep-bg:#FFF1C7; --ship-bg:#DCE9F7; --done-bg:#DDF0DE; --ok-text:#1D5A21;
+  --red:#C62828; --gold:#FFB703; --green:#2E7D32; --blue:#1F5FA6; --dark-red:#8E1B1B;
+}
+[data-theme="dark"]{
+  --text:#EDEDE6; --rule:#EDEDE6; --surface:#22221F; --bg:#151513; --line:#3A3A35; --muted:#A5A59B;
+  --tint:#3B3214; --th:#E2D8AE; --chip:#33332E; --field:#5A5A52; --hover:rgba(255,255,255,.05); --footer:#0C0C0B; --link:#FF7A6E;
+  --prep-bg:#3B3214; --ship-bg:#1B2B42; --done-bg:#1F3B22; --ok-text:#A8DDAB;
+}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,.brand,.num{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:700}
+main{flex:1}
+.sub,.muted{color:var(--muted)}
+a{color:var(--link)}
+
+/* Navbar */
+.app-nav{background:var(--red)}
+.app-nav .navbar-brand{color:#fff;font-size:1.7rem;letter-spacing:.04em;display:flex;align-items:center}
+.brand-dot{display:inline-block;width:.7rem;height:.7rem;background:var(--gold);margin-right:.55rem}
+.app-nav .nav-link{color:rgba(255,255,255,.82);font-weight:500;text-transform:uppercase;letter-spacing:.07em;font-size:.88rem;border-bottom:3px solid transparent;padding:1.05rem .9rem}
+.app-nav .nav-link:hover{color:#fff}
+.app-nav .nav-link.active{color:#fff;border-bottom-color:var(--gold)}
+.app-nav .btn-tag{background:var(--gold);color:#1B1B18}
+.new-badge{background:var(--gold);color:#1B1B18;font-size:.7rem;font-weight:700;padding:.05rem .45rem;border-radius:10px;margin-left:.4rem;letter-spacing:0}
+@media(max-width:991px){.app-nav .nav-link{padding:.65rem 0 .65rem .8rem;border-bottom:0;border-left:3px solid transparent}
+ .app-nav .nav-link.active{border-left-color:var(--gold)}.app-nav .navbar-collapse{padding-bottom:1rem}}
+
+/* Page heading */
+.page-head{margin-bottom:2rem}
+.page-head h1{font-size:2.7rem;line-height:1;margin:0 0 .6rem}
+.page-head h1::after{content:"";display:block;width:56px;height:5px;background:var(--gold);margin-top:.6rem}
+.page-head p{color:var(--muted);margin:0}
+
+/* Sections are separated by a heavy rule, not boxed in */
+.panel{border-top:3px solid var(--rule);padding-top:.9rem;margin-bottom:2.25rem}
+.panel>h2,.panel>div>h2{font-size:1.1rem;letter-spacing:.1em;margin:0 0 1rem}
+.panel .link{font-size:.85rem}
+
+/* Summary strip: four figures, hairline dividers, small colour bar above each */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--rule);margin-bottom:2.25rem}
+.strip>div{padding:1rem 1.25rem 0 0;margin-right:1.25rem;border-right:1px solid var(--line)}
+.strip>div:last-child{border-right:0;margin-right:0}
+.strip>div::before{content:"";display:block;width:30px;height:4px;margin-bottom:.7rem;background:var(--gold)}
+.strip>div:nth-child(2)::before{background:var(--red)}.strip>div:nth-child(3)::before{background:var(--blue)}.strip>div:nth-child(4)::before{background:var(--green)}
+.strip .lbl{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.strip .num{font-size:3.2rem;line-height:1.05;margin:.2rem 0}
+.strip .num.neg{color:var(--link)}
+.strip .sub{font-size:.9rem}
+@media(max-width:767px){.strip{grid-template-columns:1fr 1fr}.strip>div{padding:.9rem .5rem .9rem 0;margin-right:.75rem;border-bottom:1px solid var(--line)}
+ .strip>div:nth-child(2n){border-right:0;margin-right:0}.strip .num{font-size:2.4rem}}
+
+/* Lists (tables): ruled rows, tinted header band, two-line cells */
+.table{--bs-table-bg:transparent;--bs-table-hover-bg:var(--hover);--bs-table-color:var(--text);--bs-table-border-color:var(--line);margin:0}
+.table thead th{background:var(--tint);color:var(--th);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--rule);padding:.65rem .9rem;white-space:nowrap}
+.table td{padding:.95rem .9rem;border-color:var(--line);vertical-align:top}
+.table .c{text-align:center}
+.table td .t-main{font-weight:600}
+.table td .sub{display:block;font-size:.85rem;margin-top:.1rem}
+.table tr.row-new{--bs-table-bg:var(--tint)}
+.new-tag{background:var(--gold);color:#1B1B18;font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:.05rem .4rem;border-radius:2px;margin-left:.45rem;vertical-align:middle}
+.ln{display:flex;align-items:center;gap:.5rem;max-width:19rem;margin-bottom:.25rem}.ln:last-of-type{margin-bottom:0}
+.ln .x{margin-left:auto;color:var(--muted);font-weight:600;white-space:nowrap}
+.dot{display:inline-block;width:.6rem;height:.6rem;border-radius:1px;flex:none;margin-right:.1rem}
+.more{background:none;border:0;padding:0;margin-top:.35rem;color:var(--link);font-size:.85rem;font-weight:600;text-decoration:underline;cursor:pointer}
+.track{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;color:var(--text);background:var(--chip);padding:.25rem .5rem;border:1px solid transparent;border-radius:2px;white-space:nowrap;min-width:10.5rem;text-align:center;cursor:pointer}
+.track:hover{background:var(--tint);border-color:#E6B800}
+.track.copied{background:var(--done-bg);border-color:var(--green);color:var(--ok-text);font-weight:600}
+.chip{display:inline-block;width:1.1rem;height:1.1rem;border-radius:2px;vertical-align:middle}
+
+/* Status labels: equal width, centred */
+.badge-status{display:inline-block;min-width:7.5rem;text-align:center;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.28rem .55rem;border-radius:2px;color:#fff;white-space:nowrap}
+.s-ok{background:#2E7D32} .s-info{background:#1F5FA6} .s-low{background:#FFB703;color:#1B1B18} .s-out{background:#8E1B1B}
+.status-sel{max-width:11rem;margin:0 auto;text-align:center;text-align-last:center;font-weight:600;color:var(--text);border-width:2px;padding-left:.5rem}
+.st-prep{background-color:var(--prep-bg);border-color:#E6B800}.st-ship{background-color:var(--ship-bg);border-color:#1F5FA6}.st-done{background-color:var(--done-bg);border-color:#2E7D32}
+
+/* Buttons and fields */
+.btn{border-radius:2px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem}
+.btn-lg{font-size:.95rem}
+.btn-tag{background:var(--red);color:#fff;border:0}
+.btn-tag:hover,.btn-tag:focus{background:#a91f1f;color:#fff}
+.btn-tag:disabled{background:#8d8d84;color:#fff}
+.btn-ink{background:var(--surface);color:var(--text);border:1px solid var(--rule)}
+.btn-ink.active{background:var(--rule);color:var(--bg)}
+.form-control,.form-select{border-radius:2px;border-color:var(--field)}
+.form-control:focus,.form-select:focus{border-color:var(--rule);box-shadow:0 0 0 3px rgba(255,183,3,.55)}
+.modal-content{border-radius:2px;border:2px solid var(--rule)}
+.modal-title{letter-spacing:.06em}
+.alert{border-radius:2px}
+.chart-box{position:relative;height:280px}
+
+/* Shop: each product is a small label */
+.shop-card{background:var(--surface);border:1px solid var(--line);border-radius:2px;display:flex;flex-direction:column;height:100%}
+.shop-card.picked{border-color:var(--rule);box-shadow:4px 4px 0 var(--gold)}
+.shop-tile{display:flex;flex-direction:column;justify-content:space-between;width:100%;min-height:124px;padding:.75rem .9rem;color:#fff;border:0;border-radius:0;text-align:left;cursor:pointer}
+.shop-tile:hover .tname{text-decoration:underline}
+.shop-tile .tcat{display:flex;justify-content:space-between;align-items:flex-start;width:100%;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.shop-tile .tname{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.65rem;line-height:1}
+.in-basket{background:var(--gold);color:#1B1B18;font-size:.75rem;font-weight:700;padding:.1rem .5rem;border-radius:2px;letter-spacing:.04em}
+.shop-body{padding:.8rem .9rem .9rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.shop-body .badge-status{min-width:0;padding:.25rem .5rem}
+.shop-meta{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.4rem}
+.price{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;line-height:1}
+.qty{display:flex;gap:.4rem;align-items:stretch}
+.qty .qty-n{flex:1;text-align:center;font-weight:700;align-self:center;font-size:1.1rem}
+.toolbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+
+/* Product detail modal */
+.detail-head{padding:1.1rem 1.25rem 1.25rem;color:#fff;position:relative}
+.detail-head .tcat{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.detail-head h2{font-size:2.2rem;line-height:1;margin:.4rem 2rem 0 0}
+.detail-head .btn-close{position:absolute;right:1rem;top:1rem;filter:invert(1) grayscale(1) brightness(2)}
+.facts{margin:0}
+.facts dt{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:1rem}
+.facts dd{margin:.2rem 0 0}
+
+/* Toast for new orders (admin) */
+.toast-area{position:fixed;right:1rem;bottom:1rem;z-index:1090;display:flex;flex-direction:column;gap:.5rem}
+.toast-note{background:var(--surface);color:var(--text);border:2px solid var(--rule);box-shadow:4px 4px 0 var(--gold);padding:.75rem 1rem;max-width:22rem}
+
+/* Login */
+.login-wrap{flex:1;display:grid;grid-template-columns:1.1fr 1fr}
+.login-side{background:var(--red);color:#fff;padding:3rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.side-brand{font-size:1.8rem;letter-spacing:.05em;display:flex;align-items:center;margin-bottom:clamp(1.5rem,5vh,3rem)}
+.login-side h1{font-size:clamp(3.4rem,8vw,6.2rem);line-height:.9;margin:0}
+.login-side h1::after{content:"";display:block;width:64px;height:6px;background:var(--gold);margin-top:1.5rem}
+.login-side p{max-width:42ch;margin-top:1.25rem;color:rgba(255,255,255,.92)}
+.login-form{display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--surface)}
+.demo{border-top:2px solid var(--rule);padding-top:.75rem;font-size:.9rem;color:var(--muted)}
+@media(max-width:767px){.login-wrap{grid-template-columns:1fr}.login-side{padding:2rem}}
+
+footer.app-footer{background:var(--footer);color:#C9C9C0;padding:1.5rem 0;font-size:.9rem;margin-top:2rem}
+footer.app-footer a{color:var(--gold);text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Login page: footer sits directly under the form */
+.login-wrap + footer.app-footer{margin-top:0}
+
+/* Phones: stacked tables. Each row becomes a card; each cell shows its column name beside the value. */
+@media(max-width:767px){
+  .table-stack thead{display:none}
+  .table-stack,.table-stack tbody{display:block;width:100%}
+  .table-stack tr{display:block;padding:1rem 0;border-bottom:1px solid var(--line)}
+  .table-stack td{display:grid;grid-template-columns:6.2rem 1fr;gap:.75rem;align-items:start;padding:.3rem 0;border:0;text-align:left}
+  .table-stack td::before{content:attr(data-label);color:var(--muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding-top:.2rem}
+  .table-stack td:first-child{display:block;padding-bottom:.5rem}
+  .table-stack td:first-child::before,.table-stack td[data-label=""]::before{display:none}
+  .table-stack td[data-label=""]{display:block;text-align:center}
+  .table-stack td.c{text-align:left}
+  .table-stack .status-sel{margin:0;max-width:100%}
+  .table-stack tr.row-new{background:var(--tint)}
+}
