@@ -4,7 +4,7 @@ A front-end prototype for **MakanNow**, an SME that makes retort-pouch ready-to-
 Built for **IMS566 Advanced Web Design Development and Content Management** (Individual Project).
 
 - **Web Live Link :** (https://2025182277-uitm.github.io/Assignment-MakanNow/)
-- **Repository :** (https://github.com/2025182277-UiTM/Assignment-MakanNow)
+- **Repository :** (https://github.com/2025182277-UiTM/Assignment.MakanNow.git))
 
 ## How to test login
 | Role | Username | Password | Lands on |
